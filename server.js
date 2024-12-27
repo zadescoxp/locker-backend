@@ -4,6 +4,9 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { add_locker } from "./controllers/add_locker.js";
 import { check_locker } from "./controllers/check_locker.js";
+import { get_locker } from "./controllers/get_locker.js";
+import { check_key } from "./controllers/check_key.js";
+import { delete_locker } from "./controllers/delete_locker.js";
 
 const app = express();
 app.use(cors());
@@ -17,6 +20,12 @@ app.get("/", (req, res) => {
 app.post("/api/check", check_locker);
 
 app.post("/api/locker", add_locker);
+
+app.post("/api/locker/:id", get_locker);
+
+app.post("/api/check_key", check_key);
+
+app.post("/api/delete", delete_locker);
 
 mongoose
   .connect(`${process.env.MONGO_URL}`)
