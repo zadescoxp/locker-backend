@@ -6,7 +6,6 @@ const check_locker = async (req, res, next) => {
     res.json({ error: "Name is required" });
   } else {
     const checkName = await model.findOne({ name: name }).exec();
-    console.log(checkName);
     if (checkName) {
       res.json({ error: "Name already exists" });
     } else {
