@@ -21,7 +21,7 @@ app.post("/api/check", check_locker);
 
 app.post("/api/locker", add_locker);
 
-app.post("/api/get/:id", get_locker);
+app.post("/api/get", get_locker);
 
 app.post("/api/check_key", check_key);
 
