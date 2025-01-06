@@ -9,10 +9,10 @@ const check_key = async (req, res, next) => {
     if (match) {
       res.json({ status: 1, name: locker.name, data: locker.data });
     } else {
-      res.json({ status: 0, message: "Incorrect Passkey" });
+      res.status(400).json({ status: 0, message: "Incorrect Passkey" });
     }
   } else {
-    res.json({ status: 0, message: "Locker Not Found" });
+    res.status(404).json({ status: 0, message: "Locker Not Found" });
   }
 };
 

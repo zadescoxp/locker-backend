@@ -10,10 +10,10 @@ const delete_locker = async (req, res, next) => {
       await model.deleteOne({ name: name });
       res.json({ status: 1, message: "Locker Deleted" });
     } else {
-      res.json({ status: 0, message: "Incorrect Passkey" });
+      res.status(400).json({ status: 0, message: "Incorrect Passkey" });
     }
   } else {
-    res.json({ status: 0, message: "Locker Not Found" });
+    res.status(400).json({ status: 0, message: "Locker Not Found" });
   }
 };
 

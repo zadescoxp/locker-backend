@@ -6,7 +6,7 @@ const get_locker = async (req, res, next) => {
   if (locker) {
     res.json({ status: 1 });
   } else {
-    res.json({ status: 0 });
+    res.status(400).json({ status: 0, message: "Locker not found" });
   }
 };
 
