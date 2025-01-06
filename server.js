@@ -7,6 +7,8 @@ import { check_locker } from "./controllers/check_locker.js";
 import { get_locker } from "./controllers/get_locker.js";
 import { check_key } from "./controllers/check_key.js";
 import { delete_locker } from "./controllers/delete_locker.js";
+import { uploadFile } from "./controllers/upload.js";
+import { upload } from "./config/aws.js";
 
 const app = express();
 app.use(cors());
@@ -26,6 +28,8 @@ app.post("/api/get", get_locker);
 app.post("/api/check_key", check_key);
 
 app.post("/api/delete", delete_locker);
+
+app.post("/api/upload", upload.single("file"), uploadFile);
 
 mongoose
   .connect(`${process.env.MONGO_URL}`)
