@@ -1,5 +1,20 @@
 import mongoose from "mongoose";
 
+const fileSchema = new mongoose.Schema({
+  fileName: {
+    type: String,
+    required: true,
+  },
+  fileUrl: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
 const lockerSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -9,7 +24,7 @@ const lockerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  data: [],
+  data: [fileSchema],
   date: {
     type: Date,
     default: Date.now,
