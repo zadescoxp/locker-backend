@@ -1,7 +1,8 @@
+import { decryptObjectValues } from "../config/utils.js";
 import model from "../schema/locker.js";
 
 const check_locker = async (req, res, next) => {
-  const { name } = req.body;
+  const { name } = decryptObjectValues(req.body);
   if (!name) {
     res.status(400).json({ status: 0, message: "Name is required" });
   } else {

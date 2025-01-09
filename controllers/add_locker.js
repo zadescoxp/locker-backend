@@ -1,8 +1,9 @@
+import { decryptObjectValues } from "../config/utils.js";
 import model from "../schema/locker.js";
 import bcrypt from "bcrypt";
 
 const add_locker = async (req, res, next) => {
-  const { name } = await req.body;
+  const { name } = decryptObjectValues(req.body);
   if (!name) {
     return res.status(400).json({
       message: "Name is required",
@@ -14,7 +15,7 @@ const add_locker = async (req, res, next) => {
       message: "Name already exists",
     });
   } else {
-    const { passkey } = await req.body;
+    const { passkey } = await decryptObjectValues(req.body);
     if (!passkey) {
       return res.status(400).json({
         message: "Passkey is required",

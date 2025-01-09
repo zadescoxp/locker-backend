@@ -1,7 +1,8 @@
 import model from "../schema/locker.js";
+import { decryptObjectValues } from "../config/utils.js";
 
 const get_locker = async (req, res, next) => {
-  const { name } = req.body;
+  const { name } = decryptObjectValues(req.body);
   const locker = await model.findOne({ name: name }).exec();
   if (locker) {
     res.json({ status: 1 });
