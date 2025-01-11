@@ -20,6 +20,9 @@ const uploadFile = async (req, res) => {
   if (!match) {
     return res.status(400).json({ message: "Incorrect Passkey" });
   }
+  if (locker.data.length >= 10) {
+    return res.status(400).json({ message: "Locker is full" });
+  }
   const params = {
     Bucket: process.env.BUCKET_NAME,
     Key: encryptName(),
