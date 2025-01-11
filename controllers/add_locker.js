@@ -24,7 +24,7 @@ const add_locker = async (req, res, next) => {
     const key = bcrypt.hashSync(passkey, 10);
     const newLocker = new model({
       name: name,
-      passkey: key,
+      passkey: String(key),
     });
     newLocker.save();
   }
