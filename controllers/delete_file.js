@@ -8,7 +8,7 @@ const delete_file = async (req, res) => {
   const { name, passkey, fileName } = decryptObjectValues(req.body);
   const locker = await model.findOne({ name: name }).exec();
   if (locker) {
-    const match = await bcrypt.compare(passkey, locker.passkey);
+    const match = await bcrypt.compare(String(passkey), locker.passkey);
     if (match) {
       const file = locker.data.find((file) => file.fileName === fileName);
       if (file) {

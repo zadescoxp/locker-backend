@@ -12,7 +12,7 @@ const check_key = async (req, res, next) => {
   const { name, key } = decryptObjectValues(req.body);
   const locker = await model.findOne({ name: name }).exec();
   if (locker) {
-    const match = await bcrypt.compare(key, locker.passkey);
+    const match = await bcrypt.compare(String(key), locker.passkey);
     if (match) {
       let lockerData = [];
       if (locker.data.length > 0) {

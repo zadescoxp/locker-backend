@@ -8,7 +8,7 @@ const delete_locker = async (req, res, next) => {
   const { name, passkey } = decryptObjectValues(req.body);
   const locker = await model.findOne({ name: name }).exec();
   if (locker) {
-    const match = await bcrypt.compare(passkey, locker.passkey);
+    const match = await bcrypt.compare(String(passkey), locker.passkey);
     if (match) {
       if (locker.data.length > 0) {
         for (let i = 0; i < locker.data.length; i++) {

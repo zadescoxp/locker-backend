@@ -16,7 +16,7 @@ const uploadFile = async (req, res) => {
   if (!locker) {
     return res.status(400).json({ message: "Locker doesn't exists" });
   }
-  const match = await bcrypt.compare(passkey, locker.passkey);
+  const match = await bcrypt.compare(String(passkey), locker.passkey);
   if (!match) {
     return res.status(400).json({ message: "Incorrect Passkey" });
   }

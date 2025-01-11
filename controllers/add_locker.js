@@ -21,10 +21,10 @@ const add_locker = async (req, res, next) => {
         message: "Passkey is required",
       });
     }
-    const key = bcrypt.hashSync(passkey, 10);
+    const key = bcrypt.hashSync(String(passkey), 10);
     const newLocker = new model({
       name: name,
-      passkey: String(key),
+      passkey: key,
     });
     newLocker.save();
   }
