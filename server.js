@@ -17,7 +17,7 @@ app.use(express.json());
 dotenv.config();
 
 app.get("/", (req, res) => {
-  res.json({ data: "this is some information" });
+  res.json({ mood: "Awesome !!!" });
 });
 
 app.post("/api/check", check_locker);
