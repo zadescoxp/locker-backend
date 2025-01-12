@@ -6,6 +6,8 @@ Vouz is an open-source, no-login file-sharing platform that allows you to create
 
 **Site: [vouz.tech](https://vouz.tech)**
 
+**YouTube: [Vouz](https://youtu.be/vPx3gnUQ1K8)**
+
 **Features:**
 - **No Login Required:** Share files without the need for user accounts.
 - **Secure Lockers:** Each locker is protected by a unique passkey.
