@@ -23,6 +23,11 @@ const uploadFile = async (req, res) => {
   if (locker.data.length >= 10) {
     return res.status(400).json({ message: "Locker is full" });
   }
+  if (req.file.size > 1 * 1024 * 1024) {
+    return res
+      .status(400)
+      .json({ message: "File size exceeds the 100 MB limit." });
+  }
   const params = {
     Bucket: process.env.BUCKET_NAME,
     Key: encryptName(),
